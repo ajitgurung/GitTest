@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-
+from predict import model_predict
 app = Flask(__name__)
 
 # Define your model function here
@@ -21,20 +21,8 @@ def index():
         follicle_no_l = int(request.form['follicle_no_l'])
         follicle_no_r = int(request.form['follicle_no_r'])
 
-        input_data = {
-            'name': name,
-            'date_of_birth': date_of_birth,
-            'cycle': cycle,
-            'weight_gain': weight_gain,
-            'hair_growth': hair_growth,
-            'skin_darkening': skin_darkening,
-            'fast_food': fast_food,
-            'follicle_no_l': follicle_no_l,
-            'follicle_no_r': follicle_no_r
-        }
-
-        processed_data = process_inputs(input_data)
-        return render_template('result.html', input_data=input_data, processed_data=processed_data)
+        processed_data = model_predict(2, 1, 1,0, 0, 12, 12)
+        return render_template('result.html', name=name, processed_data=processed_data)
     return render_template('index.html')    
 
 if __name__ == '__main__':
