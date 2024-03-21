@@ -21,13 +21,13 @@ jobs:
 
       - uses: azure/docker-login@v1
         with:
-          login-server: mycontainer.azurecr.io
+          login-server: pospacr01.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - run: |
-          docker build . -t pospacr01.azurecr.io/${{ secrets.AZURE_WEBAPP_NAME}}:${{ github.sha }}
-          docker push pospacr01.azurecr.io/${{secrets.AZURE_WEBAPP_NAME}}:${{ github.sha }}
+          docker build . -t pospacr01.azurecr.io/${{ env.AZURE_WEBAPP_NAME}}:${{ github.sha }}
+          docker push pospacr01.azurecr.io/${{env.AZURE_WEBAPP_NAME}}:${{ github.sha }}
 
       - uses: azure/webapps-deploy@v2
         with:
