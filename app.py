@@ -21,7 +21,7 @@ def index():
         follicle_no_l = int(request.form['follicle_no_l'])
         follicle_no_r = int(request.form['follicle_no_r'])
 
-        processed_data = model_predict(2, 1, 1,0, 0, 12, 12)
+        processed_data = model_predict(cycle, weight_gain, hair_growth, skin_darkening, fast_food, follicle_no_l, follicle_no_r)
         return render_template('result.html', name=name, processed_data=processed_data)
     return render_template('index.html')    
 
