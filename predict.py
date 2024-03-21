@@ -35,4 +35,7 @@ def model_predict(cycle, weight_gain, hair_growth, skin_darkening, fast_food, fo
     return False
 
 # predicting test data
+# prediction for True
 # print(model_predict(2, 1, 1,0, 0, 12, 12))
+# prediction for False
+# print(model_predict(4, 0, 0,0, 0, 17, 18))
